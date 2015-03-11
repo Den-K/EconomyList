@@ -19,11 +19,12 @@ public class SignInServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         String verifyMsg;
-
-        if(validateEmail(email)) verifyMsg = "Access!";
-        else verifyMsg = "Failed!";
+        boolean validation = validateEmail(email);
+        if(validation) verifyMsg = "Access!";
+        else verifyMsg = "Denied!";
 
         request.setAttribute("verify", verifyMsg);
+        request.setAttribute("validation", validation);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
