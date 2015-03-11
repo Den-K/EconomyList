@@ -19,14 +19,17 @@ public class SignInServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         String verifyMsg;
+
         if(validateEmail(email)) verifyMsg = "Access!";
         else verifyMsg = "Failed!";
-        request.setAttribute("verify", verifyMsg);
 
+        request.setAttribute("verify", verifyMsg);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
 
     private boolean validateEmail(String email){
         Pattern p = Pattern.compile(".+[@].+\\.(com|ua|ru|net)");
