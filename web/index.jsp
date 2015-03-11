@@ -6,9 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%
-    String email = request.getParameter("email");
-    String password = request.getParameter("password");
+    String verification = (String)request.getAttribute("verify");
 %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
@@ -20,7 +20,7 @@
   <h1 align="center">EconomyList</h1>
   <div class="main" align="center">
       <div class="container">
-          <form method="post" action="#">
+          <form method="post" action="SignIn">
               <label for="email">Email:</label>
               <input type="email" id="email" name="email">
               <br/>
@@ -31,8 +31,7 @@
           </form>
       </div>
       <p>
-              Email: <%=email%>
-              Password: <%=password%>
+          Verification: <%=verification%>
       </p>
   </div>
   </body>
