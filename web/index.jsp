@@ -7,12 +7,12 @@
 --%>
 <%
     String email = request.getParameter("email");
-    String password = request.getParameter("epassword");
+    String password = request.getParameter("password");
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-      <meta charset="utf-8">
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
       <link rel="stylesheet" href="style/style.css">
       <title>EconomyList - Sign in</title>
   </head>

@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 html{
-    background-color: rgba(0, 67, 205, 0.30);
+    background-color: rgba(174, 173, 175, 0.30);
     color: #1c1c1c;
     font-size:16px;
     font-family:"Courier New", Courier, monospace;
@@ -12,7 +12,7 @@ html{
 }
 
 .container{
-    width: 250px;
+    width: 300px;
     background-color: rgba(0, 147, 215, 0.30);
     padding: 25px;
     border-radius: 5px;
