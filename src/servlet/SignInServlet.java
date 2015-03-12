@@ -24,14 +24,17 @@ public class SignInServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
+        //if fields are empty
         if(email.equals("") || password.equals("")){
             request.setAttribute("verification", "Please, fill empty fields!");
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
+        //if email is incorrect
         } else if(!validateEmail(email)) {
             request.setAttribute("verification", "Incorrect email!");
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
+        //if it's correct, check email existence in db
         } else {
 
             DAOFactory daoFactory = new DAOFactory();
