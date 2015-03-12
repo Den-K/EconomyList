@@ -16,7 +16,7 @@ public class DAOFactory implements IDAOFactory {
     public static final String DRIVER = "com.mysql.jdbc.Driver";
     public static final String URL = "jdbc:mysql://localhost:3306/economylist";
     private static final String USER = "root";
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "";
 
     public static Connection getConnection(){
 

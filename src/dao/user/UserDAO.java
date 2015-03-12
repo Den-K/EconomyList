@@ -16,4 +16,19 @@ public class UserDAO implements IUserDAO {
     public boolean updateUser(User user) {
         return true;
     }
+
+    @Override
+    public boolean verifyUserByEmail(String email) {
+        return false;
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return null;
+    }
+
+    @Override
+    public boolean verifyUserPassword(String password) {
+        return false;
+    }
 }
