@@ -1,5 +1,8 @@
 package servlet;
 
+import dao.DAOFactory;
+import dao.user.IUserDAO;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,11 +24,28 @@ public class SignInServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        if(!validateEmail(email)) {
-            request.setAttribute("verify", "Wrong email!");
+        if(email.equals("") || password.equals("")){
+            request.setAttribute("verification", "Please, fill empty fields!");
             request.getRequestDispatcher("index.jsp").forward(request, response);
-        } else{
-            request.getRequestDispatcher("purchaseList.jsp").forward(request, response);
+
+        } else if(!validateEmail(email)) {
+            request.setAttribute("verification", "Incorrect email!");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+
+        } else {
+
+            DAOFactory daoFactory = new DAOFactory();
+            IUserDAO userDAO = daoFactory.getUserDAO();
+
+                //check email in DB, means that user exists
+                if(userDAO.verifyUserByEmail(email)) {
+                    //check accordance between email and password
+                    request.getRequestDispatcher("purchaseList.jsp").forward(request, response);
+
+                } else {
+                    request.setAttribute("verification", "Email not found!");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
         }
     }
 
