@@ -7,9 +7,6 @@
 --%>
 <%
     String verification = (String)request.getAttribute("verify");
-    boolean validation = false;
-    if(verification != null)
-        validation = (Boolean)request.getAttribute("validation");
 %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -35,11 +32,7 @@
       </div>
       <p>
           <%if(verification != null){%>
-              <%if(validation){%>
-               <font color="green"><%=verification%></font>
-              <%} else{%>
                 <font color="red"><%=verification%></font>
-              <%}%>
           <%}%>
       </p>
   </div>

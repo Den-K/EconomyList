@@ -1,6 +1,7 @@
 package servlet;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,8 @@ import java.util.regex.Pattern;
 /**
  * Created by Den on 02.03.2015.
  */
+
+@WebServlet(name="SignIn", urlPatterns = "/SignIn")
 public class SignInServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -18,18 +21,16 @@ public class SignInServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        String verifyMsg;
-        boolean validation = validateEmail(email);
-        if(validation) verifyMsg = "Access!";
-        else verifyMsg = "Denied!";
-
-        request.setAttribute("verify", verifyMsg);
-        request.setAttribute("validation", validation);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        if(!validateEmail(email)) {
+            request.setAttribute("verify", "Wrong email!");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        } else{
+            request.getRequestDispatcher("purchaseList.jsp").forward(request, response);
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     private boolean validateEmail(String email){
