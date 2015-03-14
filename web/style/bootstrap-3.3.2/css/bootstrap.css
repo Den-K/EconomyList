@@ -1076,7 +1076,7 @@ body {
   font-size: 15px;
   line-height: 1.846;
   color: #828282;
-  background-color: #ffef6e;
+  background: url(../../resources/food.png) repeat;
 }
 input,
 button,
