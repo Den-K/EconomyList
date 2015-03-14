@@ -1075,8 +1075,8 @@ body {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.846;
-  color: #828282;
-  background: url(../../resources/dark.jpg) repeat;
+  color: #737373;
+  background: url(../../resources/origami-money.png) repeat;
 }
 input,
 button,
@@ -1174,7 +1174,7 @@ h6,
   font-family: inherit;
   font-weight: 400;
   line-height: 1.1;
-  color: #519b4f;
+  color: #4b4b4b;
 }
 h1 small,
 h2 small,
