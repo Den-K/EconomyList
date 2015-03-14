@@ -11,6 +11,6 @@
     <title>EconomyList - Purchases</title>
 </head>
 <body>
-<h2>Purchase list</h2>
+<h2 align="center">Purchase list</h2>
 </body>
 </html>

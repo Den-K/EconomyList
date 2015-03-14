@@ -11,5 +11,4 @@ public interface IUserDAO {
     boolean updateUser(User user);
     boolean verifyUserByEmail(String email);
     User getUserByEmail(String email);
-    boolean verifyUserPassword(String password);
 }

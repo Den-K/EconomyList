@@ -2,6 +2,7 @@ package servlet;
 
 import dao.DAOFactory;
 import dao.user.IUserDAO;
+import valueobject.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +24,7 @@ public class SignInServlet extends HttpServlet {
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        User user;
 
         //if fields are empty
         if(email.equals("") || password.equals("")){
@@ -43,7 +45,13 @@ public class SignInServlet extends HttpServlet {
                 //check email in DB, means that user exists
                 if(userDAO.verifyUserByEmail(email)) {
                     //check accordance between email and password
-                    request.getRequestDispatcher("purchaseList.jsp").forward(request, response);
+                    user = userDAO.getUserByEmail(email);
+                    if(user.getPassword().equals(password))
+                        request.getRequestDispatcher("purchaseList.jsp").forward(request, response);
+                    else {
+                        request.setAttribute("verification", "Wrong password!");
+                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                    }
 
                 } else {
                     request.setAttribute("verification", "Email not found!");
