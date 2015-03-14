@@ -13,28 +13,41 @@
 <html>
   <head>
       <meta content="text/html; charset=utf-8" http-equiv="content-type">
-      <link rel="stylesheet" href="style/style.css">
+      <link rel="stylesheet" href="style/bootstrap-3.3.2/css/bootstrap.css">
+      <link rel="stylesheet" href="style/bootstrap-3.3.2/css/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="style/bootstrap-3.3.2/js/bootstrap.js">
       <title>EconomyList - Sign in</title>
   </head>
+
   <body>
-  <h1 align="center">EconomyList</h1>
-  <div class="main" align="center">
-      <div class="container">
-          <form method="post" action="SignIn">
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email">
-              <br/>
-              <label for="password">Password:</label>
-              <input type="password" id="password" name="password">
-              <br/><br/>
-              <input type="submit" value="Sign In">
-          </form>
+      <h2 align="center">EconomyList</h2>
+      <div align="center" style="margin-top:30px">
+          <div class="container">
+              <form method="post" action="SignIn">
+                  <label  for="email">Email:</label>
+                  <input class="form-control" type="email" id="email" name="email" placeholder="Email">
+                  <br/>
+
+                  <label for="password">Password:</label>
+                  <input class="form-control" type="password" id="password" name="password" placeholder="Password">
+                  <br/>
+
+                  <%if(verification != null){%>
+                  <h5>
+                      <p class="text-warning">
+                          <%=verification%>
+                      </p>
+                  </h5>
+                  <%}%>
+                  <br/>
+
+                  <button type="submit" class="btn btn-lg btn-success">Sign In</button>
+                  <br/><br/>
+
+                  <a href="">Not registered?</a>
+
+              </form>
+          </div>
       </div>
-      <p>
-          <%if(verification != null){%>
-                <font color="red"><%=verification%></font>
-          <%}%>
-      </p>
-  </div>
   </body>
 </html>
