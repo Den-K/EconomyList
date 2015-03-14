@@ -1076,7 +1076,7 @@ body {
   font-size: 15px;
   line-height: 1.846;
   color: #9b9b9b;
-  background: url(../../resources/background.jpg) repeat;
+  background: url(../../resources/background.gif) repeat;
 }
 input,
 button,
@@ -1174,7 +1174,7 @@ h6,
   font-family: inherit;
   font-weight: 400;
   line-height: 1.1;
-  color: #80af6c;
+  color: #90c37c;
 }
 h1 small,
 h2 small,
