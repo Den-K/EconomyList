@@ -1,11 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Den
-  Date: 14.03.2015
-  Time: 23:31
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">

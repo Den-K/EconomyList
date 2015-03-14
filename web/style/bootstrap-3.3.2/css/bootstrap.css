@@ -1076,7 +1076,7 @@ body {
   font-size: 15px;
   line-height: 1.846;
   color: #828282;
-  background-color: #272b30;
+  background: url(../../resources/food.png) repeat;
 }
 input,
 button,
@@ -1174,7 +1174,7 @@ h6,
   font-family: inherit;
   font-weight: 400;
   line-height: 1.1;
-  color: #80af6c;
+  color: #555555;
 }
 h1 small,
 h2 small,
