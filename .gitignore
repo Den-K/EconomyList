@@ -1,3 +1,4 @@
 .idea/*
 *.iml
 src/dao/DAOFactory.java
+lib/*
