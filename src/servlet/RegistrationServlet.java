@@ -37,6 +37,7 @@ public class RegistrationServlet extends HttpServlet {
             DAOFactory daoFactory = new DAOFactory();
             IUserDAO userDAO = daoFactory.getUserDAO();
             userDAO.addUser(user);
+            request.getRequestDispatcher("index.jsp").forward(request,response);
         }
 
     }
