@@ -26,13 +26,10 @@
                   <br/>
 
                   <%if(verification != null){%>
-                  <h5>
                       <p class="text-warning">
                           <%=verification%>
                       </p>
-                  </h5>
                   <%}%>
-                  <br/>
 
                   <button type="submit" class="btn btn-lg btn-success">Sign In</button>
                   <br/><br/>
