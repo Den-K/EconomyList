@@ -3,6 +3,7 @@ package servlet;
 import dao.DAOFactory;
 import dao.user.IUserDAO;
 import valueobject.User;
+import verification.InputVerification;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,7 +33,7 @@ public class SignInServlet extends HttpServlet {
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
         //if email is incorrect
-        } else if(!validateEmail(email)) {
+        } else if(!InputVerification.validateEmail(email)) {
             request.setAttribute("verification", "Incorrect email!");
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
@@ -64,9 +65,4 @@ public class SignInServlet extends HttpServlet {
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
-    private boolean validateEmail(String email){
-        Pattern p = Pattern.compile(".+[@].+\\.(com|ua|ru|net)");
-        Matcher m = p.matcher(email);
-        return m.matches();
-    }
 }

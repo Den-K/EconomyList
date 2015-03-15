@@ -1,5 +1,10 @@
 package servlet;
 
+import dao.DAOFactory;
+import dao.user.IUserDAO;
+import valueobject.User;
+import verification.InputVerification;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +18,26 @@ import java.io.IOException;
 @WebServlet(name = "RegistrationServlet", urlPatterns = "/SignUp")
 public class RegistrationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+        String surname = request.getParameter("surname");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String passwordRepeat = request.getParameter("repeat");
+
+        if(name.equals("") || surname.equals("") || email.equals("") || password.equals("") || passwordRepeat.equals("")) {
+            request.setAttribute("verification", "Please, fill empty fields!");
+            request.getRequestDispatcher("registration.jsp").forward(request, response);
+
+        } else if(!InputVerification.validateEmail(email)) {
+            request.setAttribute("verification", "Incorrect email!");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+
+        } else{
+            User user = new User(name, surname, email, password);
+            DAOFactory daoFactory = new DAOFactory();
+            IUserDAO userDAO = daoFactory.getUserDAO();
+            userDAO.addUser(user);
+        }
 
     }
 
