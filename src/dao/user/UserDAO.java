@@ -14,7 +14,32 @@ import java.sql.SQLException;
 public class UserDAO implements IUserDAO {
 
     @Override
-    public void addUser(User user) { }
+    public void addUser(User user) {
+
+        Connection con = DAOFactory.getConnection();
+        PreparedStatement st = null;
+
+        try {
+            st = con.prepareStatement("INSERT INTO User (name,surname,email,password) VALUES (?,?,?,?)");
+            st.setString(1,user.getName());
+            st.setString(2,user.getSurname());
+            st.setString(3,user.getEmail());
+            st.setString(4,user.getPassword());
+            st.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        } finally {
+            try {
+                if(st != null) st.close();
+                if(con != null) con.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Override
     public boolean updateUser(User user) {

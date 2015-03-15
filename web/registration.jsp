@@ -1,3 +1,6 @@
+<%
+    String verification = (String)request.getAttribute("verification");
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -33,7 +36,15 @@
             <input class="form-control" type="password" id="repeat" name="repeat" placeholder="Repeat password">
             <br/>
 
+            <%if(verification != null){%>
+                <p class="text-warning">
+                    <%=verification%>
+                </p>
+            <%}%>
+
             <button type="submit" class="btn btn-lg btn-success">Sign up</button>
+            <br/>
+
         </form>
     </div>
 </div>
