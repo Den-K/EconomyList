@@ -17,6 +17,7 @@ import java.io.IOException;
  */
 @WebServlet(name = "RegistrationServlet", urlPatterns = "/SignUp")
 public class RegistrationServlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
