@@ -8,6 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <link rel="stylesheet" href="style/bootstrap-3.3.2/css/bootstrap.css">
+    <link rel="stylesheet" href="style/bootstrap-3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="style/bootstrap-3.3.2/js/bootstrap.js">
     <title>EconomyList - Purchases</title>
 </head>
 <body>
