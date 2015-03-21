@@ -2,6 +2,7 @@ package servlet;
 
 import dao.DAOFactory;
 import dao.user.IUserDAO;
+import org.apache.log4j.Logger;
 import valueobject.User;
 import verification.InputVerification;
 
@@ -11,8 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by Den on 02.03.2015.
@@ -20,6 +19,8 @@ import java.util.regex.Pattern;
 
 @WebServlet(name="SignIn", urlPatterns = "/SignIn")
 public class SignInServlet extends HttpServlet {
+
+    private static Logger LOG = Logger.getLogger(SignInServlet.class);
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

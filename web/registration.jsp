@@ -43,7 +43,9 @@
             <%}%>
 
             <button type="submit" class="btn btn-lg btn-success">Sign up</button>
-            <br/>
+            <br/><br/>
+
+            <a href="SignIn">Already registered?</a>
 
         </form>
     </div>
