@@ -1,6 +1,6 @@
-package dao.purchase;
+package economylist.dao.purchase;
 
-import valueobject.Purchase;
+import economylist.valueobject.Purchase;
 
 import java.util.List;
 

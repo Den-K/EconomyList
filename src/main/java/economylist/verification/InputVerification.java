@@ -1,4 +1,4 @@
-package verification;
+package economylist.verification;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

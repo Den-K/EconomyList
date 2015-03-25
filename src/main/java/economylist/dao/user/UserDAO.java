@@ -1,7 +1,7 @@
-package dao.user;
+package economylist.dao.user;
 
-import dao.DAOFactory;
-import valueobject.User;
+import economylist.dao.DAOFactory;
+import economylist.valueobject.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

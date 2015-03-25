@@ -1,6 +1,6 @@
-package dao.user;
+package economylist.dao.user;
 
-import valueobject.User;
+import economylist.valueobject.User;
 
 /**
  * Created by Den on 11.03.2015.

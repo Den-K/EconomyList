@@ -1,5 +1,5 @@
 <%
-    String verification = (String)request.getAttribute("verification");
+    String verification = (String)request.getAttribute("verif");
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>

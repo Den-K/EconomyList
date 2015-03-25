@@ -1,8 +1,8 @@
-package dao;
+package economylist.dao;
 
-import dao.purchase.PurchaseDAO;
-import dao.recommendation.RecommendationDAO;
-import dao.user.UserDAO;
+import economylist.dao.purchase.PurchaseDAO;
+import economylist.dao.recommendation.RecommendationDAO;
+import economylist.dao.user.UserDAO;
 
 /**
  * Created by Den on 12.03.2015.
