@@ -1175,7 +1175,7 @@ h6,
   font-family: inherit;
   font-weight: 400;
   line-height: 1.1;
-  color: #90c37c;
+  color: #a6eb9a;
 }
 h1 small,
 h2 small,
@@ -2242,7 +2242,8 @@ th {
 .table {
   width: 100%;
   max-width: 100%;
-  margin-bottom: 23px;
+  margin-bottom: 30px;
+  margin-top: 60px;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -2253,11 +2254,11 @@ th {
   padding: 8px;
   line-height: 1.846;
   vertical-align: top;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #555555;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
-  border-bottom: 2px solid #dddddd;
+  border-bottom: 1px solid #a6eb9a;
 }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,
@@ -3420,7 +3421,7 @@ tbody.collapse.in {
   list-style: none;
   font-size: 13px;
   text-align: left;
-  background-color: #ffffff;
+  background-color: #3c3c3c;
   border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 3px;
@@ -3445,13 +3446,13 @@ tbody.collapse.in {
   clear: both;
   font-weight: normal;
   line-height: 1.846;
-  color: #666666;
+  color: #d2d2d2;
   white-space: nowrap;
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
   text-decoration: none;
-  color: #141414;
+  color: #ffffff;
   background-color: #eeeeee;
 }
 .dropdown-menu > .active > a,
@@ -3460,7 +3461,7 @@ tbody.collapse.in {
   color: #ffffff;
   text-decoration: none;
   outline: 0;
-  background-color: #2196f3;
+  /*background-color: #2196f3;*/
 }
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
@@ -3470,8 +3471,7 @@ tbody.collapse.in {
 .dropdown-menu > .disabled > a:hover,
 .dropdown-menu > .disabled > a:focus {
   text-decoration: none;
-  background-color: transparent;
-  background-image: none;
+  background: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   cursor: not-allowed;
 }
@@ -4049,7 +4049,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar {
   position: relative;
-  min-height: 64px;
+  min-height: 40px;
   margin-bottom: 23px;
   border: 1px solid transparent;
 }
@@ -4158,10 +4158,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  padding: 20.5px 15px;
-  font-size: 17px;
+  padding: 10px 15px;
+  font-size: 12px;
   line-height: 23px;
-  height: 64px;
+  height: 40px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -4432,7 +4432,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: #eeeeee;
   color: #212121;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #666666;
   }
@@ -4525,10 +4525,10 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
-  background-color: #0c7cd5;
+  background-color: #3c3c3c;
   color: #ffffff;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {
     border-color: transparent;
   }
@@ -4547,7 +4547,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #ffffff;
-    background-color: #0c7cd5;
+    background-color: #3c3c3c;
   }
   .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover,
@@ -7309,4 +7309,42 @@ input[type="checkbox"]:disabled:checked:after,
 .carousel-caption h5,
 .carousel-caption h6 {
   color: inherit;
+}
+
+/*Customization. Overriding*/
+.navbar-inverse .navbar-nav > li > a {
+  padding-top:10px !important;
+  padding-bottom:10px !important;
+  color: #d2d2d2 !important;
+}
+.navbar-inverse .navbar-nav > li > a:focus{
+  color: #ffffff !important;
+}
+.navbar-inverse .navbar-nav > li > a:hover{
+  color: #ffffff !important;
+  background-color: #555555;
+}
+.navbar {min-height:40px !important}
+.navbar-brand {color: #a6eb9a !important}
+
+.mycontainer {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 1200px) {
+  .mycontainer {
+    width: 900px;
+  }
+}
+
+th {
+  color: #a6eb9a;
+  font-size: 11pt;
+}
+
+td {
+  color: #e1e1e1;
+  font-size: 11pt;
 }

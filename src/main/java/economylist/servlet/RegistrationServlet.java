@@ -1,9 +1,9 @@
-package servlet;
+package economylist.servlet;
 
-import dao.DAOFactory;
-import dao.user.IUserDAO;
-import valueobject.User;
-import verification.InputVerification;
+import economylist.dao.DAOFactory;
+import economylist.dao.user.IUserDAO;
+import economylist.valueobject.User;
+import economylist.verification.InputVerification;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,11 +26,11 @@ public class RegistrationServlet extends HttpServlet {
         String passwordRepeat = request.getParameter("repeat");
 
         if(name.equals("") || surname.equals("") || email.equals("") || password.equals("") || passwordRepeat.equals("")) {
-            request.setAttribute("verification", "Please, fill empty fields!");
+            request.setAttribute("verif", "Please, fill empty fields!");
             request.getRequestDispatcher("registration.jsp").forward(request, response);
 
         } else if(!InputVerification.validateEmail(email)) {
-            request.setAttribute("verification", "Incorrect email!");
+            request.setAttribute("verif", "Incorrect email!");
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
         } else{

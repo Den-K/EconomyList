@@ -1,5 +1,5 @@
 <%
-    String verification = (String)request.getAttribute("verification");
+    String verification = (String)request.getAttribute("verif");
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
   </head>
 
   <body>
-      <h2 align="center">Economy List</h2>
+      <h2 align="center">EconomyList</h2>
       <div align="center" style="margin-top:30px">
           <div class="container">
               <form method="post" action="SignIn">
