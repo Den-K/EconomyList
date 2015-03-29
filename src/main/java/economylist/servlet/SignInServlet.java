@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by Den on 02.03.2015.
- */
 
 @WebServlet(name="SignIn", urlPatterns = "/SignIn")
 public class SignInServlet extends HttpServlet {
@@ -48,8 +45,9 @@ public class SignInServlet extends HttpServlet {
                 if(userDAO.verifyUserByEmail(email)) {
                     //check accordance between email and password
                     user = userDAO.getUserByEmail(email);
-                    if(user.getPassword().equals(password))
-                        request.getRequestDispatcher("purchaseList.jsp").forward(request, response);
+                    if(user.getPassword().equals(password)) {
+                        response.sendRedirect("PurchaseList");
+                    }
                     else {
                         request.setAttribute("verif", "Wrong password!");
                         request.getRequestDispatcher("index.jsp").forward(request, response);
