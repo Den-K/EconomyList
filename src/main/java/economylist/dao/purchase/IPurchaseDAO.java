@@ -9,8 +9,8 @@ import java.util.List;
  */
 public interface IPurchaseDAO {
 
-    List<Purchase> getAll();
+    List<Purchase> getAllByUserID(int ID);
     void addPurchase(Purchase purchase);
-    boolean deletePurchase(int id);
-    boolean updatePurchase(int id);
+    boolean deletePurchase(int ID);
+    boolean updatePurchase(int ID);
 }

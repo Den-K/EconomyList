@@ -1,3 +1,11 @@
+<%@ page import="economylist.valueobject.Purchase" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="economylist.valueobject.User" %>
+<%
+    List<Purchase> purchaseList = (ArrayList<Purchase>)request.getAttribute("purchaseList");
+    User user = (User)request.getAttribute("user");
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -26,7 +34,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Link</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Your name <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%=user.getEmail()%> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
@@ -46,31 +54,19 @@
             <th>NAME</th>
             <th>NUMBER</th>
             <th>DATE</th>
-            <th>PRICE</th>
+            <th>COST</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td><input type="checkbox" id="1" value="1"></td>
-            <td>Some name</td>
-            <td>Some number</td>
-            <td>Some date</td>
-            <td>Some price</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox" id="2" value="2"></td>
-            <td>Some name 2</td>
-            <td>Some number 2</td>
-            <td>Some date 2</td>
-            <td>Some price 2</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox" id="3" value="3"></td>
-            <td>Some name 3</td>
-            <td>Some number 3</td>
-            <td>Some date 3</td>
-            <td>Some price 3</td>
-        </tr>
+        <%for(Purchase p : purchaseList){%>
+            <tr>
+                <td><input type="checkbox" id="<%=p.getId()%>" value="<%=p.getId()%>"></td>
+                <td><%=p.getName()%></td>
+                <td><%=p.getNumber()%></td>
+                <td><%=p.getDate()%></td>
+                <td><%=p.getCost()%></td>
+            </tr>
+        <%}%>
         </tbody>
     </table>
 </div>
