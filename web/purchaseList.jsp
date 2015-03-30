@@ -1,3 +1,9 @@
+<%@ page import="economylist.valueobject.Purchase" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%
+    List<Purchase> purchaseList = (ArrayList<Purchase>)request.getAttribute("purchaseList");
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -46,31 +52,19 @@
             <th>NAME</th>
             <th>NUMBER</th>
             <th>DATE</th>
-            <th>PRICE</th>
+            <th>COST</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td><input type="checkbox" id="1" value="1"></td>
-            <td>Some name</td>
-            <td>Some number</td>
-            <td>Some date</td>
-            <td>Some price</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox" id="2" value="2"></td>
-            <td>Some name 2</td>
-            <td>Some number 2</td>
-            <td>Some date 2</td>
-            <td>Some price 2</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox" id="3" value="3"></td>
-            <td>Some name 3</td>
-            <td>Some number 3</td>
-            <td>Some date 3</td>
-            <td>Some price 3</td>
-        </tr>
+        <%for(Purchase p : purchaseList){%>
+            <tr>
+                <td><input type="checkbox" id="<%=p.getId()%>" value="<%=p.getId()%>"></td>
+                <td><%=p.getName()%></td>
+                <td><%=p.getNumber()%></td>
+                <td><%=p.getDate()%></td>
+                <td><%=p.getCost()%></td>
+            </tr>
+        <%}%>
         </tbody>
     </table>
 </div>
