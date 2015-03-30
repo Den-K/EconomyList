@@ -46,8 +46,7 @@ public class SignInServlet extends HttpServlet {
                     user = userDAO.getUserByEmail(email);
                     if(user.getPassword().equals(password)) {
                         request.setAttribute("user", user);
-                        response.sendRedirect("PurchaseList");
-                        request.getRequestDispatcher("PurchaseList").forward(request, response);
+                        request.getRequestDispatcher("purchaseList.jsp").forward(request, response);
                     }
                     else {
                         request.setAttribute("verif", "Wrong password!");
