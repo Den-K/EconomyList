@@ -1,10 +1,13 @@
 <%@ page import="economylist.valueobject.Purchase" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="economylist.valueobject.User" %>
+<%@ page import="economylist.dao.DAOFactory" %>
+<%@ page import="economylist.dao.purchase.PurchaseDAO" %>
 <%
-    List<Purchase> purchaseList = (ArrayList<Purchase>)request.getAttribute("purchaseList");
+    DAOFactory daoFactory = new DAOFactory();
+    PurchaseDAO purchaseDAO = daoFactory.getPurchaseDAO();
     User user = (User)request.getAttribute("user");
+    List<Purchase> purchaseList = purchaseDAO.getAllByUserID(user.getId());
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
