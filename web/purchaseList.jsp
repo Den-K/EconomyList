@@ -29,7 +29,7 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#">Add</a></li>
+                <li><li><a data-toggle="modal" data-target="#addPurchaseModal" href="">Add</a></li>
                 <li><a href="#">Change</a></li>
                 <li><a href="#">Delete</a></li>
             </ul>
@@ -72,6 +72,35 @@
         <%}%>
         </tbody>
     </table>
+</div>
+
+<div class="modal fade" id="addPurchaseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <h4 class="modal-title" id="myModalLabel">ADD PURCHASE</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="">
+                    <label  for="name">Name:</label>
+                    <input class="form-control" type="text" id="name" name="name">
+                    <br/>
+                    <label  for="number">Number:</label>
+                    <input class="form-control" type="number" id="number" name="surname">
+                    <br/>
+                    <label  for="date">Date:</label>
+                    <input class="form-control" type="date" id="date" name="date">
+                    <br/>
+                    <label for="cost">Cost:</label>
+                    <input class="form-control" type="text" id="cost" name="cost">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success btn-sm">Add purchase</button>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
