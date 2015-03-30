@@ -82,16 +82,16 @@
             </div>
             <div class="modal-body">
                 <form method="post" action="">
-                    <label  for="name">Name:</label>
+                    <label  for="name">NAME:</label>
                     <input class="form-control" type="text" id="name" name="name">
                     <br/>
-                    <label  for="number">Number:</label>
+                    <label  for="number">NUMBER:</label>
                     <input class="form-control" type="number" id="number" name="surname">
                     <br/>
-                    <label  for="date">Date:</label>
+                    <label  for="date">DATE:</label>
                     <input class="form-control" type="date" id="date" name="date">
                     <br/>
-                    <label for="cost">Cost:</label>
+                    <label for="cost">COST:</label>
                     <input class="form-control" type="text" id="cost" name="cost">
                 </form>
             </div>

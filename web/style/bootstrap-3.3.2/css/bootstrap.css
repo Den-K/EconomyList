@@ -5768,7 +5768,7 @@ button.close {
 }
 .modal-header {
   padding: 10px;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px dashed;
   min-height: 10px;
 }
 .modal-header .close {
