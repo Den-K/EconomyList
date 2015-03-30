@@ -30,6 +30,7 @@ public class PurchaseListServlet extends HttpServlet {
         PurchaseDAO purchaseDAO = daoFactory.getPurchaseDAO();
         List<Purchase> purchaseList = purchaseDAO.getAllByUserID(user.getId());
         request.setAttribute("purchaseList",purchaseList);
+        request.setAttribute("user",user);
         request.getRequestDispatcher("purchaseList.jsp").forward(request, response);
     }
 
