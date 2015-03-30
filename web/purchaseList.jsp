@@ -78,7 +78,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" align="center">
-                <h4 class="modal-title" id="myModalLabel">ADD PURCHASE</h4>
+                <h5 style="color:#f5f5f5" class="modal-title" id="myModalLabel">ADD PURCHASE</h5>
             </div>
             <div class="modal-body">
                 <form method="post" action="">
