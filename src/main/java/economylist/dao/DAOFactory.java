@@ -1,5 +1,6 @@
 package economylist.dao;
 
+import economylist.dao.category.CategoryDAO;
 import economylist.dao.purchase.PurchaseDAO;
 import economylist.dao.recommendation.RecommendationDAO;
 import economylist.dao.user.UserDAO;
@@ -48,4 +49,7 @@ public class DAOFactory implements IDAOFactory {
     public RecommendationDAO getRecommendationDAO() {
         return new RecommendationDAO();
     }
+
+    @Override
+    public CategoryDAO getCategoryDAO() { return new CategoryDAO(); }
 }
