@@ -8,9 +8,10 @@
       <meta content="text/html; charset=utf-8" http-equiv="content-type">
       <link rel="stylesheet" href="style/bootstrap-3.3.2/css/bootstrap.css">
       <link rel="stylesheet" href="style/bootstrap-3.3.2/css/bootstrap-theme.min.css">
-      <link rel="stylesheet" href="style/bootstrap-3.3.2/js/bootstrap.js">
       <title>EconomyList - Sign in</title>
   </head>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="style/bootstrap-3.3.2/js/bootstrap.js"></script>
 
   <body>
       <h2 align="center">EconomyList</h2>

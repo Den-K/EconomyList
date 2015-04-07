@@ -7329,6 +7329,15 @@ input[type="checkbox"]:disabled:checked:after,
   color: #ffffff !important;
   background-color: #555555;
 }
+
+.navbar-inverse .navbar-nav > li > form > a:focus{
+  color: #ffffff !important;
+}
+.navbar-inverse .navbar-nav > li > form > a:hover{
+  color: #ffffff !important;
+  background-color: #555555;
+}
+
 .navbar {min-height:40px !important}
 .navbar-brand {color: #a6eb9a !important}
 
