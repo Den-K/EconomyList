@@ -3,11 +3,14 @@
 <%@ page import="economylist.valueobject.Purchase" %>
 <%@ page import="economylist.valueobject.User" %>
 <%@ page import="java.util.List" %>
+<%@ page import="economylist.dao.category.CategoryDAO" %>
 <%
     DAOFactory daoFactory = new DAOFactory();
     PurchaseDAO purchaseDAO = daoFactory.getPurchaseDAO();
     User user = (User) request.getAttribute("user");
     List<Purchase> purchaseList = purchaseDAO.getAllByUserID(user.getId());
+
+    CategoryDAO categoryDAO = daoFactory.getCategoryDAO();
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -59,6 +62,7 @@
         <thead>
         <tr>
             <th></th>
+            <th>CATEGORY</th>
             <th>NAME</th>
             <th>NUMBER</th>
             <th>DATE</th>
@@ -69,6 +73,8 @@
         <%for (Purchase p : purchaseList) {%>
         <tr>
             <td><input type="checkbox" id="<%=p.getId()%>" value="<%=p.getId()%>"></td>
+            <td><%=categoryDAO.getCategoryByPurchase(p.getId()).getName().toUpperCase()%>
+            </td>
             <td><%=p.getName()%>
             </td>
             <td><%=p.getNumber()%>
