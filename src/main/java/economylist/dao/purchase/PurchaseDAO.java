@@ -50,17 +50,18 @@ public class PurchaseDAO implements IPurchaseDAO{
     }
 
     @Override
-    public void addPurchase(Purchase purchase, int userID) {
+    public void addPurchase(Purchase purchase, int userID, int categoryID) {
 
         Connection con = DAOFactory.getConnection();
         PreparedStatement st = null;
         try {
-            st = con.prepareStatement("INSERT INTO purchase (name, date, number, cost, id_user) VALUES(?,?,?,?,?)");
+            st = con.prepareStatement("INSERT INTO purchase (name, date, number, cost, id_user, category_id) VALUES(?,?,?,?,?,?)");
             st.setString(1, purchase.getName());
             st.setDate(2, new Date(purchase.getDate().getTime()));
             st.setInt(3, purchase.getNumber());
             st.setFloat(4, purchase.getCost());
             st.setFloat(5, userID);
+            st.setInt(6,categoryID);
             st.executeUpdate();
 
         } catch (SQLException e) {

@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ICategoryDAO {
 
-    List<Category> getCategoies();
+    List<Category> getCategories();
     List<Category> getSubCategories(int categoryID);
 }

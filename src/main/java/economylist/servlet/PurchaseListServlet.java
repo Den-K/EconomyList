@@ -32,6 +32,7 @@ public class PurchaseListServlet extends HttpServlet {
         String purchaseNumber = request.getParameter("number");
         String purchaseDate = request.getParameter("date");
         String purchaseCost = request.getParameter("cost");
+        String categoryID = request.getParameter("category");
 
         if(!(purchaseName.equals("") || purchaseNumber.equals("")
             || purchaseDate.equals("") || purchaseCost.equals(""))) {
@@ -51,7 +52,7 @@ public class PurchaseListServlet extends HttpServlet {
             purchase.setCost(Float.valueOf(purchaseCost));
 
             PurchaseDAO purchaseDAO = daoFactory.getPurchaseDAO();
-            purchaseDAO.addPurchase(purchase, user.getId());
+            purchaseDAO.addPurchase(purchase, user.getId(), Integer.parseInt(categoryID));
 
             request.setAttribute("user", user);
             request.getRequestDispatcher("purchaseList.jsp").forward(request, response);

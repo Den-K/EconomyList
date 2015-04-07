@@ -8,9 +8,10 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <link rel="stylesheet" href="style/bootstrap-3.3.2/css/bootstrap.css">
     <link rel="stylesheet" href="style/bootstrap-3.3.2/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="style/bootstrap-3.3.2/js/bootstrap.js">
     <title>EconomyList - Registration</title>
 </head>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="style/bootstrap-3.3.2/js/bootstrap.js"></script>
 <body>
 <h3 align="center">Registration</h3>
 <div align="center" style="margin-top:30px">
