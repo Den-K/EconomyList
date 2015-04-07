@@ -4,10 +4,7 @@ import economylist.dao.DAOFactory;
 import economylist.valueobject.Purchase;
 import org.apache.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +13,7 @@ public class PurchaseDAO implements IPurchaseDAO{
     private static Logger LOG = Logger.getLogger(PurchaseDAO.class);
 
     @Override
-    public List<Purchase> getAllByUserID(int ID) {
+    public List<Purchase> getAllByUserID(int userID) {
 
         Connection con = DAOFactory.getConnection();
         PreparedStatement st = null;
@@ -24,7 +21,7 @@ public class PurchaseDAO implements IPurchaseDAO{
         List<Purchase> purchaseList = new ArrayList<Purchase>();
         try {
             st = con.prepareStatement("SELECT id, name, date, number, cost FROM purchase WHERE id_user = ?");
-            st.setInt(1,ID);
+            st.setInt(1,userID);
             rs = st.executeQuery();
 
             while(rs.next()){
@@ -38,7 +35,7 @@ public class PurchaseDAO implements IPurchaseDAO{
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e.getMessage());
 
         } finally {
             try {
@@ -46,15 +43,37 @@ public class PurchaseDAO implements IPurchaseDAO{
                 if(con != null) con.close();
                 if(rs != null) rs.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                LOG.error(e.getMessage());
             }
         }
         return purchaseList;
     }
 
     @Override
-    public void addPurchase(Purchase purchase) {
+    public void addPurchase(Purchase purchase, int userID) {
 
+        Connection con = DAOFactory.getConnection();
+        PreparedStatement st = null;
+        try {
+            st = con.prepareStatement("INSERT INTO purchase (name, date, number, cost, id_user) VALUES(?,?,?,?,?)");
+            st.setString(1, purchase.getName());
+            st.setDate(2, new Date(purchase.getDate().getTime()));
+            st.setInt(3, purchase.getNumber());
+            st.setFloat(4, purchase.getCost());
+            st.setFloat(5, userID);
+            st.executeUpdate();
+
+        } catch (SQLException e) {
+            LOG.error(e.getMessage());
+
+        } finally {
+            try {
+                if(st != null) st.close();
+                if(con != null) con.close();
+            } catch (SQLException e) {
+                LOG.error(e.getMessage());
+            }
+        }
     }
 
     @Override
