@@ -39,8 +39,8 @@
                         <input type="hidden" name="email" value="<%=user.getEmail()%>">
                         <!--<input type="hidden" name="sel1ID" value="<%%>">-->
                     </li>
-                    <li><a href="#">Change</a></li>
-                    <li><a href="javascript:document.listForm.submit()">Delete</a></li>
+                    <li><a href="ListOperations?change=1" onclick="document.listForm.submit()">Change</a></li>
+                    <li><a href="ListOperations?delete=1" onclick="document.listForm.submit()">Delete</a></li>
                 </ul>
             </form>
             <ul class="nav navbar-nav navbar-right">
@@ -58,7 +58,7 @@
 </nav>
 
 <div class="mycontainer">
-    <form name="listForm" method="POST" action="ListOperations">
+    <form id="listForm" name="listForm" method="POST" action="ListOperations">
         <table class="table table-condensed">
             <thead>
             <tr>
