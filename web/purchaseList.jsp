@@ -9,7 +9,7 @@
     PurchaseDAO purchaseDAO = daoFactory.getPurchaseDAO();
     User user = (User) request.getAttribute("user");
     List<Purchase> purchaseList = purchaseDAO.getAllByUserID(user.getId());
-
+    double total = 0;
     CategoryDAO categoryDAO = daoFactory.getCategoryDAO();
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -56,7 +56,6 @@
         </div>
     </div>
 </nav>
-
 <div class="mycontainer">
     <form id="listForm" name="listForm" method="POST" action="ListOperations">
         <table class="table table-condensed">
@@ -85,8 +84,18 @@
                 <td><%=p.getCost()%>
                 </td>
                 <input type="hidden" name="email" value="<%=user.getEmail()%>">
+                <%total = total + p.getCost();%>
             </tr>
             <%}%>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><b>Total: <%=total%></b></td>
+            </tr>
             </tbody>
         </table>
     </form>
