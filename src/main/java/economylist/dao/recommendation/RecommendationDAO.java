@@ -16,29 +16,25 @@ public class RecommendationDAO implements IRecommendationDAO {
 
     @Override
     //parameters are ID of user and array of his recommendations to be created from getAllByUserID
-    public List<Recommendation> getAllRecs(int userID, int[] recArray) {
+    public List<Recommendation> getAllRecs(List<Integer> categoryID) {
         Connection con = DAOFactory.getConnection();
         PreparedStatement st = null;
         ResultSet rs = null;
         List<Recommendation> recList = new ArrayList<Recommendation>();
 
-        // give array with unique elements
-        for (int k = 0; k <recArray.length; k++)
-        {
-            if (recArray[k] != 0)        //only add recommendations with defined numbers in array
-            {
             try {
-                st = con.prepareStatement("SELECT id, text FROM recommendation WHERE category_id = ?");
-                st.setInt(1, recArray[k]);
-                rs = st.executeQuery();
+                for(Integer i : categoryID) {
+                    st = con.prepareStatement("SELECT id, text FROM recommendation WHERE category_id = ?");
+                    st.setInt(1, i);
+                    rs = st.executeQuery();
 
-                while (rs.next()) {
-                    Recommendation recommendation = new Recommendation();
-                    recommendation.setId(rs.getInt(1));
-                    recommendation.setText(rs.getString(2));
-                    recList.add(recommendation);
+                    while (rs.next()) {
+                        Recommendation recommendation = new Recommendation();
+                        recommendation.setId(rs.getInt(1));
+                        recommendation.setText(rs.getString(2));
+                        recList.add(recommendation);
+                    }
                 }
-
             } catch (SQLException e) {
                 LOG.error(e.getMessage());
 
@@ -51,8 +47,7 @@ public class RecommendationDAO implements IRecommendationDAO {
                     LOG.error(e.getMessage());
                 }
             }
-            }
-        }
+
         return recList;
 
     }

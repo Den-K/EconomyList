@@ -4,6 +4,10 @@
 <%@ page import="economylist.valueobject.User" %>
 <%@ page import="java.util.List" %>
 <%@ page import="economylist.dao.category.CategoryDAO" %>
+<%@ page import="economylist.valueobject.Category" %>
+<%@ page import="economylist.dao.recommendation.RecommendationDAO" %>
+<%@ page import="economylist.valueobject.Recommendation" %>
+<%@ page import="java.util.ArrayList" %>
 <%
     DAOFactory daoFactory = new DAOFactory();
     PurchaseDAO purchaseDAO = daoFactory.getPurchaseDAO();
@@ -11,6 +15,7 @@
     List<Purchase> purchaseList = purchaseDAO.getAllByUserID(user.getId());
     double total = 0;
     CategoryDAO categoryDAO = daoFactory.getCategoryDAO();
+    List<Integer> categoryIDs = new ArrayList<Integer>();
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -72,8 +77,12 @@
             <tbody>
             <%for (Purchase p : purchaseList) {%>
             <tr>
+                <%
+                    Category category = categoryDAO.getCategoryByPurchase(p.getId());
+                    categoryIDs.add(category.getId());
+                %>
                 <td><input type="checkbox" name="selected" id="<%=p.getId()%>" value="<%=p.getId()%>"></td>
-                <td><%=categoryDAO.getCategoryByPurchase(p.getId()).getName().toUpperCase()%>
+                <td><%=category.getName().toUpperCase()%>
                 </td>
                 <td><%=p.getName()%>
                 </td>
@@ -99,6 +108,22 @@
             </tbody>
         </table>
     </form>
+
+    <%
+        RecommendationDAO recommendationDAO = daoFactory.getRecommendationDAO();
+        List<Recommendation> recommendations = recommendationDAO.getAllRecs(categoryIDs);
+    %>
+    <details>
+        <summary><span style="color: #a6eb9a; font-size: medium">Recommendations</span></summary>
+    <%
+        for(int i=0; i< recommendations.size(); i++){
+    %>
+    <span style="color: #ed9964; font-size: medium">
+        <%=recommendations.get(i).getText()%>
+        <br/>
+    </span>
+    <%}%>
+    </details>
 </div>
 </body>
 </html>

@@ -8,7 +8,7 @@ import java.util.List;
  */
 public interface IRecommendationDAO {
 
-    List<Recommendation> getAllRecs(int userID, int[] recArray);
+    List<Recommendation> getAllRecs(List<Integer> categoryID);
 
 
 }
