@@ -14,13 +14,22 @@ public class PurchaseDAO implements IPurchaseDAO{
 
     @Override
     public List<Purchase> getAllByUserID(int userID) {
-
+// Commented code here references to recommendations
         Connection con = DAOFactory.getConnection();
         PreparedStatement st = null;
         ResultSet rs = null;
         List<Purchase> purchaseList = new ArrayList<Purchase>();
+
+        //Array for IDs of harmful categories represented in the list
+         /*int [] recArray = new int [5];
+        for (int j=0;j<recArray.length; i++) recArray[j]=0;
+         */
+
+         //int n = 0;
+
         try {
             st = con.prepareStatement("SELECT id, name, date, number, cost FROM purchase WHERE id_user = ?");
+            //st = con.prepareStatement("SELECT id, name, date, number, cost, category_id FROM purchase WHERE id_user = ?");
             st.setInt(1,userID);
             rs = st.executeQuery();
 
@@ -32,6 +41,15 @@ public class PurchaseDAO implements IPurchaseDAO{
                 purchase.setNumber(rs.getInt(4));
                 purchase.setCost(rs.getFloat(5));
                 purchaseList.add(purchase);
+
+                //Compare every purchase's category with harmful ones. If matches, add its ID to array.
+
+                /* if (rs.getInt(6) == 6 || rs.getInt(6) == 7)
+                {
+                recArray[n] = rs.getInt(6);
+                    n++;
+                }
+                */
             }
 
         } catch (SQLException e) {
