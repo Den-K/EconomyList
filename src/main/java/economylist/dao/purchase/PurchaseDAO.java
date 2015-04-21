@@ -67,6 +67,41 @@ public class PurchaseDAO implements IPurchaseDAO{
         return purchaseList;
     }
 
+    public Purchase getPurchaseByID(int ID) {
+        Connection con = DAOFactory.getConnection();
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        Purchase purchase = new Purchase();
+
+        try {
+            st = con.prepareStatement("SELECT id, name, date, number, cost FROM purchase WHERE id = ?");
+            st.setInt(1, ID);
+            rs = st.executeQuery();
+
+            while(rs.next()){
+
+                purchase.setId(rs.getInt(1));
+                purchase.setName(rs.getString(2));
+                purchase.setDate(rs.getDate(3));
+                purchase.setNumber(rs.getInt(4));
+                purchase.setCost(rs.getFloat(5));
+            }
+
+        } catch (SQLException e) {
+            LOG.error(e.getMessage());
+
+        } finally {
+            try {
+                if(st != null) st.close();
+                if(con != null) con.close();
+                if(rs != null) rs.close();
+            } catch (SQLException e) {
+                LOG.error(e.getMessage());
+            }
+        }
+        return purchase;
+    }
+
     @Override
     public void addPurchase(Purchase purchase, int userID, int categoryID) {
 
