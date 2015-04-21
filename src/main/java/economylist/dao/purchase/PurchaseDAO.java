@@ -77,13 +77,60 @@ public class PurchaseDAO implements IPurchaseDAO{
         }
     }
 
+    //added implementation
     @Override
     public boolean deletePurchase(int ID) {
+
+        Connection con = DAOFactory.getConnection();
+        PreparedStatement st = null;
+
+        try {
+            st = con.prepareStatement("DELETE FROM purchase WHERE id = ?");
+            st.setInt(1,ID);
+            st.executeUpdate();
+
+        } catch (SQLException e) {
+            LOG.error(e.getMessage());
+
+        } finally {
+            try {
+                if(st != null) st.close();
+                if(con != null) con.close();
+            } catch (SQLException e) {
+                LOG.error(e.getMessage());
+            }
+        }
         return true;
     }
 
+    // added implementation, updated IPurchaseDAO
     @Override
-    public boolean updatePurchase(int ID) {
+    public boolean updatePurchase(Purchase purchase, int ID) {
+
+        Connection con = DAOFactory.getConnection();
+        PreparedStatement st = null;
+
+        try {
+            st = con.prepareStatement("UPDATE purchase SET name = ?, date = ?, number = ?, cost = ? WHERE id = ?");
+            st.setString(1, purchase.getName());
+            st.setDate(2, new Date(purchase.getDate().getTime()));
+            st.setInt(3, purchase.getNumber());
+            st.setFloat(4, purchase.getCost());
+            st.setInt(5,ID);
+            st.executeUpdate();
+
+        } catch (SQLException e) {
+            LOG.error(e.getMessage());
+
+        } finally {
+            try {
+                if(st != null) st.close();
+                if(con != null) con.close();
+            } catch (SQLException e) {
+                LOG.error(e.getMessage());
+            }
+        }
+
         return true;
     }
 }

@@ -9,5 +9,5 @@ public interface IPurchaseDAO {
     List<Purchase> getAllByUserID(int userID);
     void addPurchase(Purchase purchase, int userID, int categoryID);
     boolean deletePurchase(int ID);
-    boolean updatePurchase(int ID);
+    boolean updatePurchase(Purchase purchase, int ID);
 }
