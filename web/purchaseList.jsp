@@ -40,7 +40,7 @@
                         <!--<input type="hidden" name="sel1ID" value="<%%>">-->
                     </li>
                     <li><a href="#">Change</a></li>
-                    <li><a href="#">Delete</a></li>
+                    <li><a href="javascript:document.listForm.submit()">Delete</a></li>
                 </ul>
             </form>
             <ul class="nav navbar-nav navbar-right">
@@ -58,35 +58,38 @@
 </nav>
 
 <div class="mycontainer">
-    <table class="table table-condensed">
-        <thead>
-        <tr>
-            <th></th>
-            <th>CATEGORY</th>
-            <th>NAME</th>
-            <th>NUMBER</th>
-            <th>DATE</th>
-            <th>COST</th>
-        </tr>
-        </thead>
-        <tbody>
-        <%for (Purchase p : purchaseList) {%>
-        <tr>
-            <td><input type="checkbox" id="<%=p.getId()%>" value="<%=p.getId()%>"></td>
-            <td><%=categoryDAO.getCategoryByPurchase(p.getId()).getName().toUpperCase()%>
-            </td>
-            <td><%=p.getName()%>
-            </td>
-            <td><%=p.getNumber()%>
-            </td>
-            <td><%=p.getDate()%>
-            </td>
-            <td><%=p.getCost()%>
-            </td>
-        </tr>
-        <%}%>
-        </tbody>
-    </table>
+    <form name="listForm" method="POST" action="ListOperations">
+        <table class="table table-condensed">
+            <thead>
+            <tr>
+                <th></th>
+                <th>CATEGORY</th>
+                <th>NAME</th>
+                <th>NUMBER</th>
+                <th>DATE</th>
+                <th>COST</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%for (Purchase p : purchaseList) {%>
+            <tr>
+                <td><input type="checkbox" name="selected" id="<%=p.getId()%>" value="<%=p.getId()%>"></td>
+                <td><%=categoryDAO.getCategoryByPurchase(p.getId()).getName().toUpperCase()%>
+                </td>
+                <td><%=p.getName()%>
+                </td>
+                <td><%=p.getNumber()%>
+                </td>
+                <td><%=p.getDate()%>
+                </td>
+                <td><%=p.getCost()%>
+                </td>
+                <input type="hidden" name="email" value="<%=user.getEmail()%>">
+            </tr>
+            <%}%>
+            </tbody>
+        </table>
+    </form>
 </div>
 </body>
 </html>
