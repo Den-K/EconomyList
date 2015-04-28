@@ -8,6 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class PurchaseDAO implements IPurchaseDAO{
 
     private static Logger LOG = Logger.getLogger(PurchaseDAO.class);
@@ -185,5 +186,51 @@ public class PurchaseDAO implements IPurchaseDAO{
         }
 
         return true;
+    }
+
+    public double getSumByMonth(Date d, int ID) {
+
+        Connection con = DAOFactory.getConnection();
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        //List<Purchase> purchaseList = new ArrayList<Purchase>();
+
+        int year = d.getYear();
+        int month = d.getMonth();
+
+        double total = 0;
+
+        try {
+            //st = con.prepareStatement("SELECT id, name, date, number, cost FROM purchase WHERE id_user = ? AND date like '%" + year + "-0" + month +"%'");
+            st = con.prepareStatement("SELECT sum(cost) AS total FROM purchase WHERE id_user = ? AND date like '%" + year + "-0" + month +"%'");
+            st.setInt(1,ID);
+            rs = st.executeQuery();
+
+            total = rs.getFloat(1);
+
+            /*while(rs.next()){
+                Purchase purchase = new Purchase();
+                purchase.setId(rs.getInt(1));
+                purchase.setName(rs.getString(2));
+                purchase.setDate(rs.getDate(3));
+                purchase.setNumber(rs.getInt(4));
+                purchase.setCost(rs.getFloat(5));
+                purchaseList.add(purchase);
+
+            }*/
+
+        } catch (SQLException e) {
+            LOG.error(e.getMessage());
+
+        } finally {
+            try {
+                if(st != null) st.close();
+                if(con != null) con.close();
+                if(rs != null) rs.close();
+            } catch (SQLException e) {
+                LOG.error(e.getMessage());
+            }
+        }
+        return total;
     }
 }
