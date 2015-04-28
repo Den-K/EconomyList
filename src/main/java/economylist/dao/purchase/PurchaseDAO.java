@@ -208,6 +208,8 @@ public class PurchaseDAO implements IPurchaseDAO{
 
             total = rs.getFloat(1);
 
+
+
             /*while(rs.next()){
                 Purchase purchase = new Purchase();
                 purchase.setId(rs.getInt(1));
